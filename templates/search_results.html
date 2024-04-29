@@ -1,0 +1,59 @@
+
+{% extends 'navbar.html' %}
+
+{% block content %}
+<div>
+    
+    <form action="{{ url_for('search.search') }}" method="GET">
+        <label for="actor">Actor:</label>
+        <select id="actor" name="actor">
+          <option value="">Any</option>
+          {% for actor in actors %}
+          
+            <option value="{{ actor }}">{{ actor }}</option>
+          {% endfor %}
+        </select>
+  
+        <label for="director">Director:</label>
+        <select id="director" name="director">
+          <option value="">Any</option>
+          {% for director in directors %}
+          
+            <option value="{{ director }}">{{ director }}</option>
+          {% endfor %}
+        </select>
+  
+        <button type="submit">Filter</button>
+    </form>
+  </div>
+  
+  
+{% for movie in movies %}
+<div class="moviebox" style="background-color: rgb(237, 215, 186); padding: 40px; margin-left: 15%; margin-right: 25%; margin-bottom: 5%;">
+   
+    <strong>Movie Name:</strong> {{ movie['name'] }} |
+    <strong>Year:</strong> {{ movie['year'] }} |
+    <strong>IMDB Ratings:</strong> {{ movie['imdb_rating'] }}
+    <br>
+    
+    <a class="nav-link active" aria-current="page" href="{{ url_for('movie_details_page', movie_id=movie['id']) }}" style="text-decoration: none; color: blue;">More Details</a>
+</div>
+{% endfor %}
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+      {% if prev %}
+          <li class="page-item"><a class="page-link" href="{{ prev }}">Previous</a></li>
+      {% endif %}
+      
+      {% if next %}
+          <li class="page-item"><a class="page-link" href="{{ next }}">Next</a></li>
+      {% endif %}
+  </ul>
+</nav>
+
+
+
+
+{%endblock%}

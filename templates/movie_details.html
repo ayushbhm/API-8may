@@ -1,0 +1,36 @@
+
+{% extends 'navbar.html' %}
+
+{%block content%}
+
+<div style="border: 1px solid #ccc; padding: 20px; margin: 20px auto; width: 360px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <p style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">{{ movie_details.movie_name }}</p>
+
+    <p style="font-size: 16px; margin-bottom: 8px;"><strong>Year:</strong> {{ movie_details.year }}</p>
+    
+    <p style="font-size: 16px; margin-bottom: 8px;"><strong>IMDb Rating:</strong> {{ movie_details.imdb_rating }}</p>
+    
+    <!-- Genres -->
+    <p style="font-size: 16px; margin-bottom: 8px;"><strong>Genres:</strong>
+        <ul style="list-style: none; padding-left: 0; margin-top: 6px;">
+            {% for genre in movie_details.genres %}
+                <li style="margin-bottom: 6px;">{{ genre }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    
+   
+    <p style="font-size: 16px; margin-bottom: 8px;"><strong>Persons:</strong>
+        <ul style="list-style: none; padding-left: 0; margin-top: 6px;">
+            {% for person in movie_details.persons %}
+            
+            
+                <li style="margin-bottom: 6px;"><strong>{{ person.person_name }}</strong> - {{ person.role_name }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+
+
+
+{%endblock%}
