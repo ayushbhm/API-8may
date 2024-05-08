@@ -3,13 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-
-
 class Genre(db.Model):
     __tablename__ = 'Genre'
     name = db.Column(db.String, primary_key=True, nullable=False, unique=True)
-
-
 
 class Movie(db.Model):
     __tablename__ = 'Movie'
@@ -17,7 +13,6 @@ class Movie(db.Model):
     name = db.Column(db.String, nullable=False)
     year = db.Column(db.Integer)
     imdb_rating = db.Column(db.Integer)
-
 
 
 
@@ -32,8 +27,6 @@ class Person(db.Model):
     __tablename__ = 'Person'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     personname = db.Column(db.String, nullable=False)
-
-
 
 
 class Roles(db.Model):

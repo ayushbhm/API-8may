@@ -61,8 +61,6 @@ def index():
 
 
 
-
-
 @app.route('/movie_details/<int:movie_id>')
 def movie_details_page(movie_id):
     api_url = f'http://127.0.0.1:5000/api/movie_details/{movie_id}'
@@ -75,8 +73,6 @@ def movie_details_page(movie_id):
         movie_details = {}
 
     return render_template('movie_details.html',movie_details=movie_details)
-
-
 
 
 
